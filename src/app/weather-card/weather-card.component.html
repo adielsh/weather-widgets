@@ -1,0 +1,54 @@
+<mat-card class="weather-card edit-mode" *ngIf="item.status == 'New' ||  item.status == 'Edit'">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{item.status}} Widget</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-list>
+            <mat-list-item>    
+                <mat-form-field appearance="legacy">
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="City" [(ngModel)]="city">
+                </mat-form-field>
+              </mat-list-item>
+            <mat-list-item> 
+                <mat-form-field >
+                <mat-label>Input & change events</mat-label>
+                <input matInput [matDatepicker]="picker" (dateChange)="addEvent('change', $event)">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field>
+            </mat-list-item>
+           </mat-list>
+     
+         
+          
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="saveWeather()">Save</button>
+      <button mat-button (click)="deleteCard()">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+  
+  <mat-card class="show-mode weather-card" *ngIf="item.status == 'show'">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>{{city}}   <img [src]="weatherIconUrl"> </mat-card-title>
+      <mat-card-subtitle>{{wide_data.weather_state_name}}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        <mat-list>
+            <mat-list-item>  Temperature: {{wide_data.min_temp}}° - {{wide_data.max_temp}}°  </mat-list-item>
+            <mat-list-item>  Humidity: {{wide_data.humidity}}% </mat-list-item>
+        </mat-list>
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button (click)="editWeatherCard()">Edit</button>
+    </mat-card-actions>
+  </mat-card>
+
+
