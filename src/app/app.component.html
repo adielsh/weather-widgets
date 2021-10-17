@@ -231,12 +231,10 @@
 </div>
 
 <div class="content" role="main">
-
-
+  <!-- Main app part -->
     <mat-grid-list cols="3">
       <weather-card *ngFor="let item of items; index as i;" (delete)="onDelete($event)" [item]="item" ></weather-card>
     </mat-grid-list>
-
   <mat-card>
     <div class="example-button-container">
       <button mat-fab color="warn" aria-label="Example icon button with a home icon" (click)="addCard($event)">
