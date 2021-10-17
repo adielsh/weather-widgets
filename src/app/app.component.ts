@@ -11,8 +11,14 @@ export class AppComponent {
   
   items : Weather[] = [];
   idsCounter : number = 0
+  
+  //on Added card
   addCard($event :any){
-    this.idsCounter++;
+    if(this.idsCounter){
+      this.idsCounter++;
+    }
+    
+    
     this.items.push({id:this.idsCounter,status:'New'})
   }
 
